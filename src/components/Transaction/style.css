@@ -1,8 +1,0 @@
-
-.Transaction tr td {
-    word-break: break-all;
-}
-
-.Transaction .tdLabel {
-    min-width: 120px;
-}
