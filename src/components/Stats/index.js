@@ -1,29 +1,28 @@
-import React, { Component } from 'react';
-import './style.css';
-import DataDash from './DataDash';
-import { Grid, Row, Col } from 'react-bootstrap';
+import React, { Component } from "react";
+import "./style.css";
+import DataDash from "./DataDash";
+import { Grid, Row, Col } from "react-bootstrap";
 
-import AvgBlockTime from './AvgBlockTime';
-import AvgTxCount from './AvgTxCount';
-import BlockStats from './BlockStats';
-import BlockMoons from './BlockMoons';
-import GasUse from './GasUse';
-import LastBlock from './LastBlock';
-import LatestBlocks from './LatestBlocks';
-import LatestTransactions from './LatestTransactions';
-import TxPerSec from './TxPerSec';
+import AvgBlockTime from "./AvgBlockTime";
+import AvgTxCount from "./AvgTxCount";
+import BlockStats from "./BlockStats";
+import BlockMoons from "./BlockMoons";
+import GasUse from "./GasUse";
+import LastBlock from "./LastBlock";
+import LatestBlocks from "./LatestBlocks";
+import LatestTransactions from "./LatestTransactions";
+import TxPerSec from "./TxPerSec";
 
-import Constants from './../Constants';
+import Constants from "./../Constants";
 
 import {
   web3_eth_getBlockNumber,
   web3_eth_getBlock,
-  web3_eth_hashrate,
   web3_eth_gasPrice,
-  web3_net_peerCount
-} from '../../web3Helpers';
+  web3_net_peerCount,
+} from "../../web3Helpers";
 
-var TimerMixin = require('react-timer-mixin');
+var TimerMixin = require("react-timer-mixin");
 
 class Stats extends Component {
   constructor(props) {
@@ -33,14 +32,14 @@ class Stats extends Component {
       curr_block: null,
       hashrate: null,
       gasPrice: null,
-      peerCount: null
+      peerCount: null,
     };
   }
 
   async componentWillMount() {
     var curr_block_no = await web3_eth_getBlockNumber();
     this.setState({
-      curr_block: curr_block_no
+      curr_block: curr_block_no,
     });
     await this.getBlocks(curr_block_no);
   }
@@ -51,7 +50,7 @@ class Stats extends Component {
 
       if (curr_block_no > this.state.blocks[0].number) {
         const block = await web3_eth_getBlock(curr_block_no, true);
-        const hashrate = await web3_eth_hashrate();
+        const hashrate = 0;
         const gasPrice = await web3_eth_gasPrice();
         const peerCount = await web3_net_peerCount();
 
@@ -64,7 +63,7 @@ class Stats extends Component {
           curr_block: curr_block_no,
           hashrate: hashrate,
           gasPrice: gasPrice,
-          peerCount: peerCount
+          peerCount: peerCount,
         });
       }
     }, 3000);
@@ -82,14 +81,14 @@ class Stats extends Component {
       var currBlockObj = await web3_eth_getBlock(curr_block_no, true);
       blocks.push(currBlockObj);
     }
-    const hashrate = await web3_eth_hashrate();
+    const hashrate = 0;
     const gasPrice = await web3_eth_gasPrice();
     const peerCount = await web3_net_peerCount();
     this.setState({
       blocks: blocks,
       hashrate: hashrate,
       gasPrice: gasPrice,
-      peerCount: peerCount
+      peerCount: peerCount,
     });
   }
 

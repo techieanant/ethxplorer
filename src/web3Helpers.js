@@ -1,6 +1,6 @@
-import Web3 from 'web3';
+import Web3 from "web3";
 
-import Constants from './Constants';
+import Constants from "./Constants";
 
 let provider;
 
@@ -34,16 +34,16 @@ export const web3_eth_getBlock = (i, opt = true) => {
   });
 };
 
-export const web3_eth_hashrate = () => {
-  return new Promise((resolve, reject) => {
-    web3.eth.getHashrate((err, data) => {
-      if (err) {
-        reject(err);
-      }
-      resolve(data);
-    });
-  });
-};
+// export const web3_eth_hashrate = () => {
+//   return new Promise((resolve, reject) => {
+//     web3.eth.getHashrate((err, data) => {
+//       if (err) {
+//         reject(err);
+//       }
+//       resolve(data);
+//     });
+//   });
+// };
 
 export const web3_eth_gasPrice = () => {
   return new Promise((resolve, reject) => {
@@ -67,7 +67,7 @@ export const web3_net_peerCount = () => {
   });
 };
 
-export const web3_eth_getBalance = addr => {
+export const web3_eth_getBalance = (addr) => {
   return new Promise((resolve, reject) => {
     web3.eth.getBalance(addr, (err, data) => {
       if (err) {
@@ -78,7 +78,7 @@ export const web3_eth_getBalance = addr => {
   });
 };
 
-export const web3_eth_getTransactionCount = addr => {
+export const web3_eth_getTransactionCount = (addr) => {
   return new Promise((resolve, reject) => {
     web3.eth.getTransactionCount(addr, (err, data) => {
       if (err) {
@@ -89,7 +89,7 @@ export const web3_eth_getTransactionCount = addr => {
   });
 };
 
-export const web3_eth_getTransactionByHash = hash => {
+export const web3_eth_getTransactionByHash = (hash) => {
   return new Promise((resolve, reject) => {
     web3.eth.getTransaction(hash, (err, data) => {
       if (err) {
@@ -100,7 +100,7 @@ export const web3_eth_getTransactionByHash = hash => {
   });
 };
 
-export const web3_eth_getTransactionReceipt = hash => {
+export const web3_eth_getTransactionReceipt = (hash) => {
   return new Promise((resolve, reject) => {
     web3.eth.getTransactionReceipt(hash, (err, data) => {
       if (err) {
